@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
     // Adding Services to the Dependency Injection Container
     builder.Services
         .AddAplication()
-        .AddInfrastructure(); // This method is an extension method that adds application services to the DI container.
+        .AddInfrastructure(builder.Configuration); // This method is an extension method that adds application services to the DI container.
     
     builder.Services.AddControllers();
 
