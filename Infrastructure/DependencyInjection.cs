@@ -1,6 +1,9 @@
 ﻿using Application.Common.Interfaces.Authentication;
 using Application.Common.Interfaces.Services;
+using Application.Common.Persistence;
+using Application.Services.Authentication;
 using Infrastructure.Authentication;
+using Infrastructure.Persistence;
 using Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +20,7 @@ public static class DependencyInjection
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
         services.AddSingleton<IJwtTokenGenerator, JwtTokengenerator>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-
+        services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }
 }

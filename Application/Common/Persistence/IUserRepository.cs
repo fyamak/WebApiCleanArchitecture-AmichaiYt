@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services.Authentication;
+namespace Application.Common.Persistence;
 
-public record AuthenticationResult(
-    User User,
-    string Token
-);
+public interface IUserRepository
+{
+    User? GetUserByEmail(string email);
+    void Add(User user);
+}

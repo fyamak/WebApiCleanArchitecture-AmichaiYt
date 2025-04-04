@@ -12,6 +12,6 @@ public record AuthenticationResponse
     string FirstName,
     string LastName,
     string Email,
-    string Token,
-    DateTime ExpiresAt
+    DateTime CreatedAt,
+    string Token
 );
