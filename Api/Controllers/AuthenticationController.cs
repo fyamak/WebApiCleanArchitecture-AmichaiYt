@@ -30,12 +30,12 @@ public class AuthenticationController : ControllerBase
         );
 
         var response = new AuthenticationResponse(
-            authResult.Id,
-            authResult.FirstName,
-            authResult.LastName,
-            authResult.Email,
-            authResult.Token,
-            authResult.ExpiresAt
+            authResult.User.Id,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.User.Email,
+            authResult.User.CreatedAt,
+            authResult.Token
         );
         return Ok(response);
     }
@@ -49,12 +49,12 @@ public class AuthenticationController : ControllerBase
             loginRequest.Password);
 
         var response = new AuthenticationResponse(
-            authResult.Id,
-            authResult.FirstName,
-            authResult.LastName,
-            authResult.Email,
-            authResult.Token,
-            authResult.ExpiresAt
+            authResult.User.Id,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.User.Email,
+            authResult.User.CreatedAt,
+            authResult.Token
         );
 
         return Ok(response);
