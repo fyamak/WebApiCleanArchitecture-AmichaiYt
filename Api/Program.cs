@@ -1,3 +1,5 @@
+using Api.Filters;
+using Api.Middleware;
 using Application;
 using Application.Services.Authentication;
 using Infrastructure;
@@ -11,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
         .AddAplication()
         .AddInfrastructure(builder.Configuration); // This method is an extension method that adds application services to the DI container.
     
-    builder.Services.AddControllers();
+    builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>()); // for global error handling with filter
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
@@ -32,6 +34,7 @@ var app = builder.Build();
         app.UseSwaggerUI();
     }
 
+    //app.UseMiddleware<ErrorHandlingMiddleware>();
     app.UseHttpsRedirection(); // Forces requests to use HTTPS instead of HTTP.
     //app.UseAuthorization();
     app.MapControllers(); //Maps incoming HTTP requests to the appropriate controller actions.
