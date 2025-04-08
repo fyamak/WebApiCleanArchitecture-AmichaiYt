@@ -1,3 +1,4 @@
+using Api.Common.Mapper;
 using Api.Middleware;
 using Application;
 using Infrastructure;
@@ -11,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
         .AddInfrastructure(builder.Configuration); // This method is an extension method that adds application services to the DI container.
     
     builder.Services.AddControllers();
+    builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
